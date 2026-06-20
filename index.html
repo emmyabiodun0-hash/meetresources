@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEET – Agency Collaboration Network</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ═══ NAVBAR ═══ -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <img src="image.png" alt="meet logo" class="logo-img" />
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+
+          <div class="nav-item-dropdown">
+            <a href="#about">About <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="about us.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>About Us</h4>
+                  <p>Learn more about MEET Resources</p>
+                </span>
+              </a>
+              <a href="#about" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Our Story</h4>
+                  <p>How MEET came to life</p>
+                </span>
+              </a>
+              <a href="partner.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Our Partners</h4>
+                  <p>Trusted organisations we work with</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#platform">Platform <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="how it woke.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>How It Works</h4>
+                  <p>Step-by-step platform guide</p>
+                </span>
+              </a>
+              <a href="#platform" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Shift/Staff Exchange</h4>
+                  <p>Exchange unutilised resources</p>
+                </span>
+              </a>
+              <a href="#job" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Job Matching</h4>
+                  <p>Find the perfect temporary match</p>
+                </span>
+              </a>
+              <a href="#Digital" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">04</span>
+                <span class="nav-dropdown-text">
+                  <h4>Digital Timesheet</h4>
+                  <p>Track hours digitally</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#users">Users <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="#platform" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Agencies</h4>
+                  <p>Share your excess workers with partner agencies</p>
+                </span>
+              </a>
+              <a href="how it woke.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Hirers</h4>
+                  <p>Post vacancies and find vetted temp workers</p>
+                </span>
+              </a>
+              <a href="#job" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Workers</h4>
+                  <p>Browse shifts and start earning today</p>
+                </span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">04</span>
+                <span class="nav-dropdown-text">
+                  <h4>Get Started</h4>
+                  <p>Create a free account today</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#resources">Resources <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="faq.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>FAQs</h4>
+                  <p>Answers to common questions</p>
+                </span>
+              </a>
+              <a href="help center.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Help Centre</h4>
+                  <p>Guides and support articles</p>
+                </span>
+              </a>
+              <a href="media.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Media</h4>
+                  <p>Event photos, videos, and promotional content</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+          <a href="#" class="btn-signin">Sign in</a>
+          <a href="#" class="btn-get-started">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="home">
+      <!-- Hero Carousel -->
+      <div class="hero-carousel">
+        <div class="hero-slide active" style="background-image: url('https://www.meetresources.com/images/job1.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('https://www.meetresources.com/images/management0.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('https://www.meetresources.com/images/guy2.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('https://www.meetresources.com/images/job4.jpg')"></div>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content" data-reveal>
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Agency Collaboration Network
+        </div>
+        <h1 class="hero-title">
+          Your Temp Workforce<br />
+          Management, <span class="title-gold">Always in Sync.</span>
+        </h1>
+        <p class="hero-sub">
+          Join agencies already unlocking the power of collaborative staffing —
+          fill every shift, place every worker, and grow every day.
+        </p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary-lg">Get Started Free <span class="arrow">→</span></a>
+          <a href="#how-it-works" class="btn-ghost-lg">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-slider-dots" id="heroDots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- ═══ PARTNERS MARQUEE ═══ -->
+    <section class="partners-section">
+      <h2 class="partners-heading">Trusted by Industry Leaders</h2>
+      <p class="partners-sub">Powering growth with world-class partnerships</p>
+      <div class="marquee-outer">
+        <div class="marquee-track" id="marquee1">
+          <div class="marquee-items">
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-1.jpeg&w=256&q=75" alt="Partner 1" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-3.jpeg&w=256&q=75" alt="Partner 3" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-4.jpeg&w=256&q=75" alt="Partner 4" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fincensu.jpg&w=256&q=75" alt="Incensu" /></span>
+            <span class="m-item"><img src="https://www.newmillennia.co.uk/wp-content/uploads/2020/02/new-millenia-logo.svg" alt="New Millennia" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fexperian.png&w=256&q=75" alt="Experian" /></span>
+            <!-- Duplicate for seamless loop -->
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-1.jpeg&w=256&q=75" alt="Partner 1" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-3.jpeg&w=256&q=75" alt="Partner 3" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fpartner-4.jpeg&w=256&q=75" alt="Partner 4" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fincensu.jpg&w=256&q=75" alt="Incensu" /></span>
+            <span class="m-item"><img src="https://www.newmillennia.co.uk/wp-content/uploads/2020/02/new-millenia-logo.svg" alt="New Millennia" /></span>
+            <span class="m-item"><img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fexperian.png&w=256&q=75" alt="Experian" /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BRAND STORY ═══ -->
+    <section class="brand-story" id="about">
+      <div class="container grid-2col">
+        <div class="story-left" data-reveal>
+          <span class="label-pill">✦ BRAND STORY</span>
+          <h2 class="section-title">
+            The MEET<br /><span class="gold">Story</span>
+          </h2>
+          <div class="gold-bar"></div>
+          <p class="story-tagline">
+            How we are reshaping temporary recruitment for agencies, workers,
+            and the wider community.
+          </p>
+        </div>
+        <div class="story-right" data-reveal data-delay="100">
+          <p>
+            Recruitment agencies often face a tough situation. If they do not
+            have enough candidates to fill shifts, they risk losing contracts
+            with their clients. But if they do have workers ready and could not
+            find enough shifts, they risk losing money and trust. Either way,
+            someone or something is left unused —
+            <strong>shift or staff</strong>.
+          </p>
+          <p>
+            <strong>MEET Resources Limited</strong> was created to solve this
+            problem. We have built a secure online platform where agencies can
+            connect and share their unused resources. If one agency has extra
+            staff and another has open shifts, they can work together instead of
+            missing out.
+          </p>
+          <p>
+            But MEET is not just about agencies.
+            <strong>Job seekers</strong> can also use the platform to get
+            accredited, upload their documents, complete checks, and get matched
+            with temporary jobs that suit their skills. It is fast, reliable,
+            and built to help everyone move forward.
+          </p>
+          <div class="story-callout">
+            <p>
+              MEET is here to make temporary recruitment
+              <span class="accent-gold">smarter</span>,
+              <span class="accent-gold">fairer</span>, and
+              <span class="accent-gold">more connected</span> for agencies,
+              workers, and the wider community.
+            </p>
+          </div>
+          <button class="btn-show-more" id="showMoreBtn">Show less ↑</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MISSION & VISION ═══ -->
+    <section class="mv-section">
+      <div class="container grid-2col">
+        <div class="mv-card" data-reveal>
+          <div class="mv-card-header">
+            <div class="mv-icon mission-icon">🎯</div>
+            <span class="mv-label">OUR MISSION</span>
+          </div>
+          <h3>Redefining Recruitment</h3>
+          <p>
+            To redefine temporary recruitment through a dynamic platform built
+            on innovation, ethical collaboration and compliance.
+          </p>
+        </div>
+        <div class="mv-card" data-reveal data-delay="120">
+          <div class="mv-card-header">
+            <div class="mv-icon vision-icon">👁</div>
+            <span class="mv-label">OUR VISION</span>
+          </div>
+          <h3>Technology Meets Trust</h3>
+          <p>
+            To lead the future of temporary recruitment where technology meets
+            trust, and every shift builds a stronger workforce.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ USER TYPES ═══ -->
+    <section class="user-types" id="users">
+      <div class="container">
+        <div class="section-header center" data-reveal>
+          <h2 style="color: #fff">Meet's User Types</h2>
+        </div>
+        <div class="user-cards-grid">
+          <div class="user-card" data-reveal>
+            <div class="uc-num">1</div>
+            <div class="uc-arc"></div>
+            <h3>Agencies</h3>
+            <p>
+              MEET offers a seamless platform for agencies to exchange excess
+              shifts with those having available staff, ensuring optimal
+              workforce utilisation. This service fosters collaboration and
+              fills staffing gaps efficiently.
+            </p>
+            <a href="#" class="btn-discover">Discover more</a>
+          </div>
+          <div class="user-card" data-reveal data-delay="100">
+            <div class="uc-num">2</div>
+            <div class="uc-arc"></div>
+            <h3>Hirers</h3>
+            <p>
+              We specialise in connecting hirers with vetted temporary workers
+              across various sectors in the UK, ensuring every vacancy is filled
+              on time.
+            </p>
+            <a href="#" class="btn-discover">Discover more</a>
+          </div>
+          <div class="user-card" data-reveal data-delay="200">
+            <div class="uc-num">3</div>
+            <div class="uc-arc"></div>
+            <h3>Workers</h3>
+            <p>
+              Workers can browse available shifts, get matched instantly based
+              on skills and location, and start earning — flexible work on your
+              own terms, backed by verified hirers.
+            </p>
+            <a href="#" class="btn-discover">Discover more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="how-section" id="how-it-works">
+      <div class="container">
+        <div class="how-header" data-reveal>
+          <div>
+            <span class="tag-pill">● HOW IT WORKS</span>
+            <h2 class="section-title">
+              Simple Steps Transforming<br />
+              <span class="gold">Temporary Workforce</span>
+            </h2>
+          </div>
+          <p class="how-sub">
+            See how MEET effortlessly optimize temporary shift/staff allocation.
+          </p>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step step-dark" data-reveal>
+          <div class="step-content">
+            <span class="step-badge badge-everyone">● FOR EVERYONE</span>
+            <div class="step-bg-num">01</div>
+            <div class="step-icon-box">🔐</div>
+            <h3>Sign Up &amp; Get Verified</h3>
+            <p>
+              Create your account (Agency, Worker, Hirer) in minutes. Complete
+              your KYC and upload all credentials — our verification process is
+              fast, secure, and designed to build trust across our entire
+              network.
+            </p>
+            <div class="step-footer">
+              <div class="step-dots-row">
+                <span class="sdot active"></span>
+                <span class="sdot"></span><span class="sdot"></span>
+                <span class="sdot"></span><span class="sdot"></span>
+              </div>
+              <span class="step-counter">01 / 05</span>
+              <span class="step-label-corner">Step 01 <small>of 5</small></span>
+            </div>
+          </div>
+          <div class="step-visual">
+            <img src="https://www.meetresources.com/images/job1.jpg" alt="Sign Up & Get Verified" />
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step step-teal" data-reveal>
+          <div class="step-content">
+            <span class="step-badge badge-agencies">● FOR AGENCIES</span>
+            <div class="step-bg-num">02</div>
+            <div class="step-icon-box">⇄</div>
+            <h3>Exchange Shifts &amp; Staff</h3>
+            <p>
+              Post unfilled shifts or list available workers. Other agencies on
+              the network can match with you instantly — collaborate, negotiate,
+              and agree terms all within a beautifully simple dashboard.
+            </p>
+            <div class="step-footer">
+              <div class="step-dots-row">
+                <span class="sdot"></span>
+                <span class="sdot active"></span>
+                <span class="sdot"></span><span class="sdot"></span><span class="sdot"></span>
+              </div>
+              <span class="step-counter">02 / 05</span>
+              <span class="step-label-corner">Step 02 <small>of 5</small></span>
+            </div>
+          </div>
+          <div class="step-visual">
+            <img src="https://www.meetresources.com/images/management0.jpg" alt="Exchange Shifts & Staff" />
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step step-gold" data-reveal>
+          <div class="step-content">
+            <span class="step-badge badge-hirers">● FOR HIRERS</span>
+            <div class="step-bg-num" style="color: rgba(0,0,0,0.12)">03</div>
+            <div class="step-icon-box icon-dark">💼</div>
+            <h3 style="color: #1a2a1a">Post Vacancies &amp; Find Temp Staff</h3>
+            <p style="color: rgba(0,0,0,0.65)">
+              Hirers can post temporary vacancies and get matched with vetted
+              workers who fit into their requirements and are available to fill
+              shifts — fast, compliant, and hassle-free.
+            </p>
+            <div class="step-footer">
+              <div class="step-dots-row">
+                <span class="sdot sdot-dark"></span><span class="sdot sdot-dark"></span>
+                <span class="sdot active"></span>
+                <span class="sdot sdot-dark"></span><span class="sdot sdot-dark"></span>
+              </div>
+              <span class="step-counter" style="color:rgba(0,0,0,0.45)">03 / 05</span>
+              <span class="step-label-corner" style="color:rgba(0,0,0,0.55)">Step 03 <small>of 5</small></span>
+            </div>
+          </div>
+          <div class="step-visual">
+            <img src="https://www.meetresources.com/images/guy2.jpg" alt="Post Vacancies & Find Temp Staff" />
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step step-light" data-reveal>
+          <div class="step-content">
+            <span class="step-badge badge-workers">● FOR WORKERS</span>
+            <div class="step-bg-num" style="color:rgba(0,0,0,0.07)">04</div>
+            <div class="step-icon-box icon-light-bg">👤</div>
+            <h3 style="color:#0d3535">Browse Shifts &amp; Start Earning</h3>
+            <p style="color:#6b7280">
+              Workers can browse available shifts by location and skill, get
+              matched instantly, and start earning. Flexible work on your own
+              terms, backed by verified hirers and clear agreements.
+            </p>
+            <div class="step-footer">
+              <div class="step-dots-row">
+                <span class="sdot sdot-dark"></span><span class="sdot sdot-dark"></span><span class="sdot sdot-dark"></span>
+                <span class="sdot active"></span>
+                <span class="sdot sdot-dark"></span>
+              </div>
+              <span class="step-counter" style="color:#9ca3af">04 / 05</span>
+              <span class="step-label-corner" style="color:#9ca3af">Step 04 <small>of 5</small></span>
+            </div>
+          </div>
+          <div class="step-visual">
+            <img src="https://www.meetresources.com/images/job4.jpg" alt="Browse Shifts & Start Earning" />
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step step-dark" data-reveal>
+          <div class="step-content">
+            <span class="step-badge badge-everyone">● FOR EVERYONE</span>
+            <div class="step-bg-num">05</div>
+            <div class="step-icon-box">📈</div>
+            <h3>Grow Together &amp; Thrive</h3>
+            <p>
+              Agencies grow their network, hirers fill every shift on time, and
+              workers build their reputation. MEET tracks your success rate so
+              trust builds automatically across the platform.
+            </p>
+            <div class="step-footer">
+              <div class="step-dots-row">
+                <span class="sdot"></span><span class="sdot"></span><span class="sdot"></span><span class="sdot"></span>
+                <span class="sdot active"></span>
+              </div>
+              <span class="step-counter">05 / 05</span>
+              <span class="step-label-corner">Step 05 <small>of 5</small></span>
+            </div>
+          </div>
+          <div class="step-visual">
+            <img src="https://www.meetresources.com/images/job1.jpg" alt="Grow Together & Thrive" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA STRIP ═══ -->
+    <section class="cta-strip">
+      <div class="container center" data-reveal>
+        <p class="cta-overline">YOU'RE ALL CAUGHT UP</p>
+        <h2>Ready to get started?</h2>
+        <p class="cta-sub">
+          Join hundreds of agencies already using MEET to optimise their
+          workforce and fill every shift.
+        </p>
+        <a href="#" class="btn-cta-big">
+          <span class="pulse-dot"></span> Join MEET — It's Free
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ FOR AGENCIES ═══ -->
+    <section class="for-agencies" id="platform">
+      <div class="container grid-2col align-center">
+        <div class="agencies-img-wrap" data-reveal>
+          <img
+            src="https://www.meetresources.com/_next/image?url=%2Fimages%2Flady2.png&w=1200&q=75"
+            alt="Agency Staffing"
+            class="agencies-photo"
+          />
+        </div>
+        <div data-reveal data-delay="100">
+          <span class="overline-label">FOR AGENCIES</span>
+          <h2 class="section-title">
+            Exchange Staff or Shift<br />with those in need.
+          </h2>
+          <p>
+            Discover how to simplify staffing challenges with our innovative
+            exchange platform. Whether it is surplus shift or surplus staff,
+            MEET connects agencies to create a balanced workforce. By
+            collaborating through our platform, you can fill critical gaps or
+            share opportunities effortlessly to ensure smooth operations and
+            quality service delivery.
+          </p>
+          <a href="#" class="btn-outline">Discover more →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURE HIGHLIGHTS ═══ -->
+    <section class="features-section" id="Digital">
+      <div class="container center">
+        <h2 class="section-title">Feature Highlights</h2>
+        <p class="section-sub">Everything you need to run a connected, compliant, and efficient temporary workforce operation.</p>
+      </div>
+      <div class="container">
+        <div class="feat-slider-outer" id="featOuter">
+          <div class="feat-slider-track" id="featTrack">
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">Shift‑Staff Exchange</div>
+                <svg viewBox="0 0 64 64"><polyline points="44 4 60 4 60 20"/><polyline points="20 60 4 60 4 44"/><line x1="60" y1="4" x2="36" y2="28"/><line x1="4" y1="60" x2="28" y2="36"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>This feature enables agencies to seamlessly exchange surplus staff or open shifts with partner agencies in real-time.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">User Management</div>
+                <svg viewBox="0 0 64 64"><circle cx="24" cy="22" r="12"/><path d="M8 56c0-8.8 7.2-16 16-16s16 7.2 16 16"/><path d="M44 28a8 8 0 1 0 0-16"/><path d="M56 56c0-8.8-5.4-16-12-16"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>This feature ensures that the platform operates secure, attractive, and fully functional services for all user types.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">Direct Messaging</div>
+                <svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="36" rx="4"/><polyline points="8 8 32 28 56 8"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>This feature enables users to seamlessly exchange private communication in real-time across the platform.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">Meet Community</div>
+                <svg viewBox="0 0 64 64"><circle cx="20" cy="20" r="10"/><circle cx="44" cy="20" r="10"/><circle cx="32" cy="44" r="10"/><line x1="20" y1="30" x2="32" y2="34"/><line x1="44" y1="30" x2="32" y2="34"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>This feature enables sharing of platform updates, events and community/group discussions among all members.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">Instant Matching</div>
+                <svg viewBox="0 0 64 64"><circle cx="24" cy="24" r="16"/><line x1="36" y1="36" x2="56" y2="56"/><path d="M18 24h12m-6-6v12"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>Smart AI-powered matching connects workers to the right shifts based on skills, location and availability.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-card-top">
+                <div class="feat-card-label">Digital Timesheet</div>
+                <svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="6"/><line x1="20" y1="8" x2="20" y2="24"/><line x1="44" y1="8" x2="44" y2="24"/><line x1="8" y1="28" x2="56" y2="28"/><line x1="20" y1="38" x2="44" y2="38"/><line x1="20" y1="48" x2="36" y2="48"/></svg>
+              </div>
+              <div class="feat-card-bottom"><p>Fully digital timesheets remove paperwork, reduce errors and ensure accurate payment processing for all workers.</p><div class="feat-card-dots"><span></span><span class="a"></span><span></span></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="feat-slider-nav">
+          <button class="feat-nav-btn" id="featPrev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="feat-nav-btn" id="featNext"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="feat-slider-dots" id="featDots"></div>
+      </div>
+    </section>
+
+    <!-- ═══ FOR JOB SEEKERS ═══ -->
+     
+    <section class="for-workers" id="job">
+      <div class="container grid-2col align-center">
+        <div data-reveal>
+          <span class="overline-label light">FOR JOB SEEKERS</span>
+          <h2 class="section-title light">
+            Register and become MEET employee to secure instant shift
+          </h2>
+          <p class="light-text">
+            Become a valued MEET employee and enjoy access to a steady stream of
+            tailored shift opportunities that match your skills and preferences.
+            Our platform ensures you're regularly connected with available
+            shifts, offering flexibility, competitive pay, and consistent
+            support to help you thrive in your career.
+          </p>
+          <a href="#" class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff">Discover more →</a>
+        </div>
+        <div class="workers-img" data-reveal data-delay="100">
+          <img
+            src="https://www.meetresources.com/_next/image?url=%2Fimages%2Fjob1.jpg&w=1200&q=75"
+            alt="MEET employees working"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHY MEET ═══ -->
+    <section class="why-section" id="resources">
+      <div class="container">
+        <div class="center">
+          <h2 class="section-title">Why Choose <span class="gold">MEET?</span></h2>
+          <p class="section-sub">MEET stands out with its unique features tailored to simplify temporary staffing. With a focus on innovation, compliance and ethical collaboration, MEET ensures a smooth and effective experience for all users.</p>
+        </div>
+        <div class="bubble-wrapper">
+          <div class="bubble">
+            <div class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+            <div class="bubble-label">On‑time Notification</div>
+            <div class="bubble-sub">Real-time alerts so you never miss a shift</div>
+          </div>
+          <div class="bubble">
+            <div class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="bubble-label">MEET Community</div>
+            <div class="bubble-sub">Connect with agencies and hirers UK-wide</div>
+          </div>
+          <div class="bubble">
+            <div class="bubble-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div class="bubble-label">Secure Messaging</div>
+            <div class="bubble-sub">End-to-end encrypted platform communication</div>
+          </div>
+          <div class="bubble">
+            <div class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div class="bubble-label">Right‑to‑Work Docs</div>
+            <div class="bubble-sub">Compliant document upload and verification</div>
+          </div>
+          <div class="bubble bubble-center">
+            <div class="bubble-center-inner">
+              <h4>MEET Special Features</h4>
+              <p>Our platform follows industry best practices for security, performance and usability.</p>
+              <a href="#">Learn More →</a>
+            </div>
+          </div>
+          <div class="bubble">
+            <div class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="bubble-label">DBS Check</div>
+            <div class="bubble-sub">Integrated background checks for a safe workforce</div>
+          </div>
+        </div>
+        <div class="center"><h3 class="special-feat-title">MEET Special <span class="gold">Features</span></h3></div>
+        <div class="special-grid">
+          <div class="spec-card">DBS Check</div>
+          <div class="spec-card">Digital Timesheet</div>
+          <div class="spec-card">Learning Management System</div>
+          <div class="spec-card">Shift / Staff Updates</div>
+        </div>
+        <div class="center" style="margin-top:36px"><a href="#" class="btn-outline">Learn More →</a></div>
+      </div>
+    </section>
+
+    <!-- ═══ NEWSLETTER ═══ -->
+    <section class="newsletter-section">
+      <div class="container grid-2col align-center">
+        <div data-reveal>
+          <h2 class="section-title">
+            Get Latest Recruitment <span class="gold">Updates</span>
+          </h2>
+          <p>
+            Sign up to our email updates and be among the first to receive any
+            recruitment opportunity and related articles.
+          </p>
+          <div class="sub-row">
+            <input type="email" class="sub-input" placeholder="Enter your email address" />
+            <button class="btn-subscribe" id="subBtn">Subscribe</button>
+          </div>
+          <p class="sub-thanks" id="subThanks" style="display:none;color:#1a6b5a;font-weight:600;margin-top:12px;">
+            ✓ You're subscribed!
+          </p>
+        </div>
+        <div class="newsletter-img" data-reveal data-delay="100">
+          <img
+            src="https://www.meetresources.com/_next/image?url=%2Fimages%2Flady.png&w=1200&q=75"
+            alt="Recruitment Updates"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="nav-logo footer-logo">
+              <img src="https://www.meetresources.com/_next/image?url=%2Fimages%2Flogo.png&w=256&q=75" alt="meet logo" class="logo-img footer-logo-img" />
+            </a>
+            <p>
+              The UK's leading platform revolutionising temporary workforce
+              distribution.
+            </p>
+            <div class="social-row">
+              <a href="https://www.facebook.com/profile.php?id=61566385212171" class="social-btn" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/meetresources/" class="social-btn" aria-label="Instagram">ig</a>
+              <a href="https://www.linkedin.com/company/meet-resources-limited/" class="social-btn" aria-label="LinkedIn">in</a>
+              <a href="https://x.com/meetresources" class="social-btn" aria-label="X">𝕏</a>
+              <a href="https://www.tiktok.com/@meetresources" class="social-btn" aria-label="TikTok">tt</a>
+              <a href="https://youtube.com/@meetresourceslimited" class="social-btn" aria-label="YouTube">▶</a>
+            </div>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Partners</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#">How It Works</a></li>
+              <li><a href="#">Shift Exchange</a></li>
+              <li><a href="#">Job Matching</a></li>
+              <li><a href="#">Join Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Help Centre</a></li>
+              <li><a href="#">ESG Statement</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Meet Resources Limited. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+            <a href="mailto:info@meetresources.com">info@meetresources.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

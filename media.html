@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media — MEET</title>
+<style>
+  :root{
+    --teal-900:#0d2e2c;
+    --teal-800:#13403c;
+    --teal-700:#1a4d47;
+    --teal-650:#19453f;
+    --gold:#dba36b;
+    --gold-light:#e8bd8e;
+    --ink:#0f2522;
+    --gray-600:#5b6b69;
+    --gray-400:#8a9a97;
+    --line:#e7eeec;
+    --bg-soft:#f3faf8;
+    --white:#ffffff;
+    --shadow-card:0 4px 18px rgba(13,46,44,0.06);
+    --shadow-card-hover:0 18px 40px rgba(13,46,44,0.16);
+    --ease:cubic-bezier(.22,.61,.36,1);
+    
+  --dark: #0d2e2c;
+  --teal: #13403c;
+  --gray: #5b6b69;
+  --cream: #f3faf8;
+  --bg-light: #f3faf8;
+  --shadow-md: 0 10px 25px rgba(0,0,0,0.12);
+  --trans: 0.3s ease;
+}
+  
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  ul{list-style:none;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+  /* ===================== HEADER ===================== */
+  .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow var(--trans);
+}
+.navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #fff;
+}
+.logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.footer-logo-img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color:  white;
+}
+.nav-links > a {
+  color: rgba(255,255,255,0.80);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color var(--trans);
+  position: relative;
+}
+.nav-links > a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width var(--trans);
+}
+.nav-links > a:hover { color: #fff; }
+.nav-links > a:hover::after { width: 100%; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ═══ NAV DROPDOWN ═══ */
+.nav-item-dropdown {
+  position: relative;
+}
+.nav-item-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+
+/* Plus / Minus toggle circle */
+.nav-plus {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background var(--trans), border-color var(--trans);
+}
+.nav-plus::before,
+.nav-plus::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  transition: transform var(--trans);
+}
+.nav-plus::before {
+  width: 8px;
+  height: 1.5px;
+  transform: translate(-50%, -50%);
+}
+.nav-plus::after {
+  width: 1.5px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.nav-item-dropdown.active > a,
+.nav-item-dropdown:hover > a {
+  color: #fff;
+}
+.nav-item-dropdown.active > a .nav-plus,
+.nav-item-dropdown:hover > a .nav-plus {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Turn + into − on hover/active */
+.nav-item-dropdown:hover .nav-plus::after,
+.nav-item-dropdown.active .nav-plus::after {
+  transform: translate(-50%, -50%) scaleY(0);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 320px;
+  padding: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
+  z-index: 250;
+}
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown.active .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--trans);
+}
+.nav-dropdown-item:hover {
+  background: var(--bg-light);
+}
+.nav-dropdown-num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+}
+.nav-dropdown-text h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.nav-dropdown-text p {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* Mobile: dropdown becomes inline expandable */
+@media (max-width: 900px) {
+  .nav-dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height var(--trans), padding var(--trans);
+  }
+  .nav-dropdown::before { display: none; }
+  .nav-item-dropdown.active .nav-dropdown {
+    max-height: 600px;
+    padding: 10px 0 4px 0;
+  }
+  .nav-dropdown-text h4 { color: var(--dark); }
+}
+
+.btn-signin {
+  color: rgba(255,255,255,0.78);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color var(--trans);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.btn-signin:hover { color: #fff; }
+
+.btn-get-started {
+  background: var(--gold);
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background var(--trans), transform var(--trans);
+}
+.btn-get-started:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 66px;
+  left: 0;
+  right: 0;
+  background: var(--dark);
+  padding: 20px 5% 28px;
+  gap: 18px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: slideDown 0.3s ease;
+  align-items: flex-start;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+  /* ===================== HERO ===================== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 18% 24%, rgba(255,255,255,0.05) 1px, transparent 1.6px) 0 0/26px 26px,
+      linear-gradient(160deg, var(--teal-650) 0%, var(--teal-900) 100%);
+    color:var(--white);
+    text-align:center;
+    padding:60px 32px 0;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 50% 0%, rgba(219,163,107,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;
+    letter-spacing:.08em;color:var(--gold-light);margin-bottom:28px;
+    opacity:0;animation:fadeUp .6s var(--ease) .05s forwards;
+  }
+  .eyebrow .dot{
+    width:7px;height:7px;border-radius:50%;background:var(--gold);
+    animation:pulseDot 2.2s infinite;
+  }
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(219,163,107,.5);}
+    70%{box-shadow:0 0 0 7px rgba(219,163,107,0);}
+    100%{box-shadow:0 0 0 0 rgba(219,163,107,0);}
+  }
+  .hero h1{
+    font-size:clamp(36px,5.4vw,62px);font-weight:800;line-height:1.08;letter-spacing:-.02em;
+    margin-bottom:22px;opacity:0;animation:fadeUp .65s var(--ease) .15s forwards;
+  }
+  .hero h1 .accent{color:var(--gold-light);}
+  .hero p.lead{
+    font-size:18px;color:rgba(255,255,255,.78);max-width:600px;margin:0 auto 48px;
+    line-height:1.6;opacity:0;animation:fadeUp .65s var(--ease) .25s forwards;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+  .stats-row{
+    display:flex;justify-content:center;gap:80px;
+    padding-bottom:54px;
+    opacity:0;animation:fadeUp .65s var(--ease) .35s forwards;
+  }
+  .stat{text-align:center;}
+  .stat .num{
+    font-size:clamp(32px,4vw,46px);font-weight:800;color:var(--gold-light);
+    line-height:1;margin-bottom:6px;
+  }
+  .stat .label{font-size:14px;color:rgba(255,255,255,.6);letter-spacing:.02em;}
+  .stat-divider{width:1px;background:rgba(255,255,255,.15);align-self:stretch;}
+
+  /* ===================== TABS ===================== */
+  .tabs-wrap{
+    display:flex;justify-content:center;
+    transform:translateY(50%);
+    position:relative;z-index:6;
+  }
+  .tabs{
+    display:inline-flex;
+    background:var(--white);
+    border-radius:999px;
+    padding:6px;
+    box-shadow:0 14px 38px rgba(13,46,44,.18);
+    gap:4px;
+  }
+  .tab{
+    display:flex;align-items:center;gap:8px;
+    padding:12px 26px;border-radius:999px;
+    font-size:15px;font-weight:600;color:var(--gray-600);
+    transition:background .3s var(--ease), color .3s var(--ease);
+    white-space:nowrap;
+  }
+  .tab .count{
+    font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:999px;
+    background:#eef3f2;color:var(--gray-600);
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .tab.active{background:var(--teal-800);color:#fff;}
+  .tab.active .count{background:rgba(255,255,255,.18);color:#fff;}
+  .tab:not(.active):hover{color:var(--teal-800);}
+
+  /* ===================== FEATURED ===================== */
+  .section{padding:130px 32px 0;}
+  .section.gallery-section{padding:90px 32px 0;}
+  .section-head{max-width:680px;margin:0 auto 44px;}
+  .section-head.center{text-align:center;}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--bg-soft);border:1px solid var(--line);
+    padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;
+    letter-spacing:.06em;color:var(--teal-800);margin-bottom:20px;
+  }
+  .section-head h2{
+    font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;color:var(--ink);
+  }
+
+  .featured-frame{
+    position:relative;
+    max-width:1100px;margin:0 auto;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(13,46,44,.22);
+    aspect-ratio:16/8;
+    background:linear-gradient(135deg,#2f5e57,#13403c);
+  }
+  .featured-frame img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .featured-frame:hover img{transform:scale(1.04);}
+  .featured-frame::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(13,46,44,.55) 100%);
+  }
+  .featured-caption{
+    position:absolute;left:36px;bottom:30px;color:#fff;z-index:2;
+  }
+  .featured-caption .tag{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(6px);
+    padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:700;
+    letter-spacing:.04em;margin-bottom:10px;
+  }
+  .featured-caption h3{font-size:24px;font-weight:800;}
+
+  /* ===================== GALLERY GRID ===================== */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:50px;
+  }
+  .gallery-item{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    cursor:pointer;
+    background:linear-gradient(135deg,#1a4d47,#0d2e2c);
+  }
+  .gallery-item:nth-child(5n+1){grid-row:span 2;aspect-ratio:auto;}
+  .gallery-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s var(--ease);
+  }
+  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-overlay{
+    position:absolute;inset:0;
+    background:rgba(13,46,44,0);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .35s var(--ease);
+  }
+  .gallery-item:hover .gallery-overlay{background:rgba(13,46,44,.55);}
+  .view-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.95);
+    color:var(--teal-900);font-weight:700;font-size:14px;
+    padding:10px 22px;border-radius:999px;
+    opacity:0;transform:translateY(10px) scale(.92);
+    transition:opacity .3s var(--ease), transform .3s var(--ease);
+  }
+  .gallery-item:hover .view-btn{opacity:1;transform:translateY(0) scale(1);}
+  .view-btn svg{transition:transform .25s var(--ease);}
+  .gallery-item:hover .view-btn svg{transform:translateX(3px);}
+
+  .load-more-wrap{
+    text-align:center;
+    padding:54px 0 110px;
+  }
+  .load-more-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--teal-800);color:#fff;
+    font-size:15.5px;font-weight:700;
+    padding:16px 36px;border-radius:999px;
+    transition:background .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .load-more-btn:hover{
+    background:var(--teal-700);
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(19,64,60,.25);
+  }
+  .load-more-btn:active{transform:translateY(0);}
+  .load-more-btn svg{transition:transform .4s var(--ease);}
+  .load-more-btn.spinning svg{transform:rotate(360deg);}
+  .remaining{
+    display:block;margin-top:14px;
+    font-size:14px;color:var(--gray-400);
+  }
+
+  /* ===================== LIGHTBOX ===================== */
+  .lightbox{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(8,24,22,.92);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s var(--ease);
+    padding:40px;
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox-img{
+    max-width:min(90vw,1100px);max-height:85vh;
+    border-radius:14px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    transform:scale(.92);
+    transition:transform .35s var(--ease);
+  }
+  .lightbox.open .lightbox-img{transform:scale(1);}
+  .lightbox-close{
+    position:absolute;top:28px;right:32px;
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(255,255,255,.1);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s var(--ease), transform .25s var(--ease);
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg);}
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:50px;height:50px;border-radius:50%;
+    background:rgba(255,255,255,.1);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s var(--ease), transform .25s var(--ease);
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,.2);}
+  .lightbox-nav.prev{left:28px;}
+  .lightbox-nav.next{right:28px;}
+  .lightbox-nav.prev:hover{transform:translateY(-50%) translateX(-3px);}
+  .lightbox-nav.next:hover{transform:translateY(-50%) translateX(3px);}
+
+  /* ===================== FOOTER ===================== */
+  footer{background:var(--teal-800);color:rgba(255,255,255,.82);padding:70px 32px 0;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:36px;padding-bottom:50px;}
+  .footer-brand .logo{margin-bottom:18px;}
+  .footer-brand p{font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.55);max-width:280px;margin-bottom:24px;}
+  .social-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .social-row a{
+    width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s var(--ease), transform .25s var(--ease);
+  }
+  .social-row a:hover{background:var(--gold);color:var(--teal-900);transform:translateY(-3px);}
+  .footer-col h4{font-size:13px;font-weight:800;letter-spacing:.08em;color:#fff;margin-bottom:20px;}
+  .footer-col ul{display:flex;flex-direction:column;gap:13px;}
+  .footer-col a{font-size:14.5px;color:rgba(255,255,255,.62);transition:color .2s var(--ease), padding-left .2s var(--ease);}
+  .footer-col a:hover{color:var(--gold-light);padding-left:3px;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);padding:26px 0;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:13.5px;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px;
+  }
+  .footer-bottom .right-links{display:flex;gap:24px;}
+  .footer-bottom a:hover{color:#fff;}
+
+  /* ===================== SCROLL TO TOP ===================== */
+  .scroll-top{
+    position:fixed;right:28px;bottom:28px;width:50px;height:50px;border-radius:50%;
+    background:var(--gold);color:var(--teal-900);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+    opacity:0;pointer-events:none;transform:translateY(12px);
+    transition:opacity .3s var(--ease), transform .3s var(--ease), background .25s var(--ease);
+    z-index:200;
+  }
+  .scroll-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .scroll-top:hover{background:var(--gold-light);transform:translateY(-3px);}
+
+  /* ===================== REVEAL ===================== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:980px){
+    nav.main-nav{display:none;}
+    .burger{display:block;}
+    .gallery-grid{grid-template-columns:repeat(3,1fr);}
+    .stats-row{gap:48px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-brand{grid-column:1/-1;}
+  }
+  @media (max-width:680px){
+    .wrap,.section,.hero,.breadcrumb-bar{padding-left:20px;padding-right:20px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-item:nth-child(5n+1){grid-row:span 1;aspect-ratio:1/1;}
+    .tabs{flex-wrap:wrap;}
+    .tab{padding:10px 18px;font-size:14px;}
+    .stats-row{gap:30px;}
+    .featured-frame{aspect-ratio:4/3;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
+    .lightbox-nav{width:42px;height:42px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <img src="image.png" alt="meet logo" class="logo-img" />
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+
+          <div class="nav-item-dropdown">
+            <a href="#about">About <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="about us.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>About Us</h4>
+                  <p>Learn more about MEET Resources</p>
+                </span>
+              </a>
+              <a href="#about" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Our Story</h4>
+                  <p>How MEET came to life</p>
+                </span>
+              </a>
+              <a href="partner.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Our Partners</h4>
+                  <p>Trusted organisations we work with</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#platform">Platform <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="how it woke.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>How It Works</h4>
+                  <p>Step-by-step platform guide</p>
+                </span>
+              </a>
+              <a href="#platform" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Shift/Staff Exchange</h4>
+                  <p>Exchange unutilised resources</p>
+                </span>
+              </a>
+              <a href="#job" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Job Matching</h4>
+                  <p>Find the perfect temporary match</p>
+                </span>
+              </a>
+              <a href="#Digital" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">04</span>
+                <span class="nav-dropdown-text">
+                  <h4>Digital Timesheet</h4>
+                  <p>Track hours digitally</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#users">Users <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="#platform" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Agencies</h4>
+                  <p>Share your excess workers with partner agencies</p>
+                </span>
+              </a>
+              <a href="how it woke.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Hirers</h4>
+                  <p>Post vacancies and find vetted temp workers</p>
+                </span>
+              </a>
+              <a href="#job" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>For Workers</h4>
+                  <p>Browse shifts and start earning today</p>
+                </span>
+              </a>
+              <a href="#" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">04</span>
+                <span class="nav-dropdown-text">
+                  <h4>Get Started</h4>
+                  <p>Create a free account today</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-item-dropdown">
+            <a href="#resources">Resources <span class="nav-plus"></span></a>
+            <div class="nav-dropdown">
+              <a href="faq.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">01</span>
+                <span class="nav-dropdown-text">
+                  <h4>FAQs</h4>
+                  <p>Answers to common questions</p>
+                </span>
+              </a>
+              <a href="help center.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">02</span>
+                <span class="nav-dropdown-text">
+                  <h4>Help Centre</h4>
+                  <p>Guides and support articles</p>
+                </span>
+              </a>
+              <a href="media.html" class="nav-dropdown-item">
+                <span class="nav-dropdown-num">03</span>
+                <span class="nav-dropdown-text">
+                  <h4>Media</h4>
+                  <p>Event photos, videos, and promotional content</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+          <a href="#" class="btn-signin">Sign in</a>
+          <a href="#" class="btn-get-started">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+
+<section class="hero">
+  <div class="eyebrow"><span class="dot"></span> OUR STORY IN PICTURES</div>
+  <h1>Moments that <span class="accent">make MEET.</span></h1>
+  <p class="lead">Event highlights, behind-the-scenes captures, and the faces of the people who power our community.</p>
+
+  <div class="stats-row">
+    <div class="stat"><div class="num">292</div><div class="label">Photos</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="num">∞</div><div class="label">More coming</div></div>
+  </div>
+</section>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" id="tabPhotos">Photos <span class="count">292</span></div>
+    <div class="tab" id="tabVideos">Videos <span class="count">YouTube</span></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="pill">⭐ FEATURED</div>
+      <h2>Spotlight Reel</h2>
+    </div>
+    <div class="featured-frame reveal" id="featuredFrame">
+      <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop" alt="Featured spotlight photo">
+      <div class="featured-caption">
+        <div class="tag">📸 Event Highlight</div>
+        <h3>Behind the scenes with the MEET team</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gallery-section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="pill">🖼 THE FULL GALLERY</div>
+      <h2>Every Frame, Every Story</h2>
+      <p style="margin-top:14px;color:var(--gray-600);font-size:16px;">Showing <span id="shownCount">12</span> of 292</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <div class="load-more-wrap">
+      <button class="load-more-btn" id="loadMoreBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 11-2.6-6.4M21 4v6h-6"/></svg>
+        Load more photos
+      </button>
+      <span class="remaining" id="remainingText">280 more to discover</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <svg width="28" height="22" viewBox="0 0 30 24" fill="none">
+          <path d="M2 22V8L8 2L14 8V22M14 22V8L20 2L26 8V22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        meet
+      </a>
+      <p>The UK's leading platform revolutionising temporary workforce distribution.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1 0 2.1.2 2.1.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 9.42H5.7v9.06h2.64V9.42zM7.02 5.4a1.53 1.53 0 100 3.06 1.53 1.53 0 000-3.06zm11.31 8.21c0-2.55-1.36-3.74-3.18-3.74a2.74 2.74 0 00-2.49 1.37h-.04V9.42H10v9.06h2.64v-4.49c0-1.18.22-2.32 1.69-2.32 1.45 0 1.47 1.35 1.47 2.4v4.41h2.63v-4.87z"/></svg></a>
+        <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-7.4l-5.8-7.6L3 22H0l8.1-9.3L0 2h7.4l5.3 7 6.2-7z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.4 4.4 0 01-3.1-1.3v9.5a5 5 0 11-4.3-5v2.6a2.4 2.4 0 102.4 2.4V2h2.5a4.4 4.4 0 003.9 3.7v2.1a6.7 6.7 0 01-1.4-.2v.2z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2s-.2-1.6-.9-2.4c-.9-1-1.9-1-2.3-1C16.9 3.6 12 3.6 12 3.6s-4.9 0-7.8.2c-.4 0-1.4 0-2.3 1-.7.8-.9 2.4-.9 2.4S.8 9.1.8 11v1.9c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.4c.9 1 2 1 2.5 1.1 1.8.2 7.6.2 7.6.2s4.9 0 7.8-.3c.4 0 1.4 0 2.3-1 .7-.8.9-2.4.9-2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 14.9V8.5l6 3.2-6 3.2z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Partners</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>PLATFORM</h4>
+      <ul>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Shift Exchange</a></li>
+        <li><a href="#">Job Matching</a></li>
+        <li><a href="#">Join Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>RESOURCES</h4>
+      <ul>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">ESG Statement</a></li>
+        <li><a href="#">Carbon Reduction Plan</a></li>
+        <li><a href="#">Environmental Policy</a></li>
+        <li><a href="#">Sustainability &amp; DEI Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>LEGAL &amp; SUPPORT</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© 2026 Meet Resources Limited. All rights reserved.</span>
+    <div class="right-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+      <a href="mailto:info@meetresources.com">info@meetresources.com</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lightbox-nav prev" id="lightboxPrev">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Gallery preview">
+  <button class="lightbox-nav next" id="lightboxNext">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  /* ---------- header scroll shadow + scroll-top button ---------- */
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 8);
+    scrollTopBtn.classList.toggle('visible', y > 480);
+  });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  /* ---------- mobile burger (placeholder) ---------- */
+  document.getElementById('burger').addEventListener('click', (e) => {
+    e.currentTarget.classList.toggle('open');
+  });
+
+  /* ---------- tabs ---------- */
+  const tabPhotos = document.getElementById('tabPhotos');
+  const tabVideos = document.getElementById('tabVideos');
+  tabPhotos.addEventListener('click', () => {
+    tabPhotos.classList.add('active');
+    tabVideos.classList.remove('active');
+  });
+  tabVideos.addEventListener('click', () => {
+    tabVideos.classList.add('active');
+    tabPhotos.classList.remove('active');
+    alert('Videos are hosted on our YouTube channel — this would link out in production.');
+  });
+
+  /* ---------- gallery data (replace src values with your real photo paths) ---------- */
+  const TOTAL_PHOTOS = 292;
+  const PAGE_SIZE = 12;
+  let shown = 0;
+
+  // Using a varied set of Unsplash placeholder photos themed around events/teams/work.
+  const placeholderPool = [
+    "photo-1511578314322-379afb476865","photo-1556761175-5973dc0f32e7","photo-1521737711867-e3b97375f902",
+    "photo-1531482615713-2afd69097998","photo-1542744173-8e7e53415bb0","photo-1517048676732-d65bc937f952",
+    "photo-1556761175-4b46a572b786","photo-1515187029135-18ee286d815b","photo-1517245386807-bb43f82c33c4",
+    "photo-1556157382-97eda2d62296","photo-1543269865-cbf427effbad","photo-1505373877841-8d25f7d46678",
+    "photo-1591115765373-5207764f72e7","photo-1573164713988-8665fc963095","photo-1556905055-8f358a7a47b2",
+    "photo-1528605248644-14dd04022da1","photo-1505373877841-8d25f7d46678","photo-1556761175-b413da4baf72",
+    "photo-1582213782179-e0d53f98f2ca","photo-1556742049-0cfed4f6a45d","photo-1551836022-d5d88e9218df",
+    "photo-1521791136064-7986c2920216","photo-1543269664-647a0d6dc7f3","photo-1517245386807-bb43f82c33c4"
+  ];
+  function imgUrl(seedIndex){
+    const id = placeholderPool[seedIndex % placeholderPool.length];
+    return `https://images.unsplash.com/${id}?q=80&w=900&auto=format&fit=crop&sig=${seedIndex}`;
+  }
+
+  const grid = document.getElementById('galleryGrid');
+  const shownCountEl = document.getElementById('shownCount');
+  const remainingEl = document.getElementById('remainingText');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+  function renderBatch(){
+    const next = Math.min(shown + PAGE_SIZE, TOTAL_PHOTOS);
+    for(let i = shown; i < next; i++){
+      const item = document.createElement('div');
+      item.className = 'gallery-item reveal';
+      item.dataset.index = i;
+      item.innerHTML = `
+        <img src="${imgUrl(i)}" alt="Gallery photo ${i+1}" loading="lazy">
+        <div class="gallery-overlay">
+          <span class="view-btn">View
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>`;
+      item.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(item);
+      io.observe(item);
+    }
+    shown = next;
+    shownCountEl.textContent = shown;
+    const remaining = TOTAL_PHOTOS - shown;
+    remainingEl.textContent = remaining > 0 ? `${remaining} more to discover` : `That's all 292 photos!`;
+    if(remaining <= 0){
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  loadMoreBtn.addEventListener('click', () => {
+    loadMoreBtn.classList.add('spinning');
+    setTimeout(() => {
+      renderBatch();
+      loadMoreBtn.classList.remove('spinning');
+    }, 350);
+  });
+
+  /* ---------- lightbox ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  let currentIndex = 0;
+
+  function openLightbox(i){
+    currentIndex = i;
+    lightboxImg.src = imgUrl(i).replace('w=900','w=1600');
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showNext(dir){
+    currentIndex = (currentIndex + dir + shown) % shown;
+    lightboxImg.src = imgUrl(currentIndex).replace('w=900','w=1600');
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => showNext(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => showNext(1));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') showNext(1);
+    if(e.key === 'ArrowLeft') showNext(-1);
+  });
+
+  /* ---------- featured image click also opens lightbox ---------- */
+  document.getElementById('featuredFrame').addEventListener('click', () => {
+    lightboxImg.src = document.querySelector('#featuredFrame img').src.replace('w=1600','w=2000');
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  /* ---------- scroll reveal ---------- */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+
+  /*-----nav------ */
+  const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+// Mobile dropdowns
+document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+
+    if (window.innerWidth <= 960) {
+      e.preventDefault();
+
+      const parent = this.parentElement;
+
+      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+        if (item !== parent) {
+          item.classList.remove('active');
+        }
+      });
+
+      parent.classList.toggle('active');
+    }
+  });
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 960) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+});
+
+
+  /* ---------- initial render ---------- */
+  renderBatch();
+</script>
+
+</body>
+</html>

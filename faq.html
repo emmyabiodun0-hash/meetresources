@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs — Meet Resources</title>
+<style>
+  :root {
+    --teal-dark: #0d3d35;
+    --teal-mid: #14534a;
+    --gold: #c9a84c;
+    --text-dark: #0d3d35;
+    --text-muted: #6b7c79;
+    --bg-light: #f7fbfb;
+    --card-border: #e7edec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== HEADER / NAV ===== */
+  header {
+    background: var(--teal-dark);
+    position: relative;
+    z-index: 100;
+  }
+
+  .nav-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .logo svg { display: block; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    list-style: none;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 4px;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .nav-toggle-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 1;
+    transition: background 0.25s ease, border-color 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-item.open .nav-link,
+  .nav-item:hover .nav-link {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .nav-item.open .nav-toggle-icon,
+  .nav-item:hover .nav-toggle-icon {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .signin-link {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .btn-getstarted {
+    background: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-getstarted:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  /* Invisible bridge so hover doesn't drop when moving from trigger to panel */
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 18px;
+  }
+
+  /* Dropdown panel */
+  .dropdown-panel {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    width: 300px;
+    padding: 10px 0;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    z-index: 50;
+  }
+
+  .dropdown-panel::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  .nav-item.open .dropdown-panel,
+  .nav-item:hover .dropdown-panel {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 22px;
+    transition: background 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    background: #f6f8f8;
+  }
+
+  .dropdown-number {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #eef2f2;
+    color: var(--teal-dark);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dropdown-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+
+  .dropdown-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(180deg, var(--teal-dark) 0%, var(--teal-mid) 100%);
+    text-align: center;
+    padding: 70px 24px 90px;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-bottom: 26px;
+  }
+
+  .hero-badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    color: #fff;
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Role cards */
+  .role-cards {
+    max-width: 1300px;
+    margin: -55px auto 0;
+    padding: 0 40px 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .role-card {
+    background: #fff;
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 34px 30px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  }
+
+  .role-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(13,61,53,0.1);
+    background: var(--teal-dark);
+    border-color: var(--teal-dark);
+  }
+
+  .role-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: #eef2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    transition: background 0.25s ease;
+  }
+
+  .role-card:hover .role-icon {
+    background: var(--gold);
+  }
+
+  .role-icon svg { width: 24px; height: 24px; }
+
+  .role-card:hover .role-icon-svg {
+    stroke: #fff;
+  }
+
+  .role-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    transition: color 0.25s ease;
+  }
+
+  .role-card:hover h3 { color: #fff; }
+
+  .role-card p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+  }
+
+  .role-card:hover p { color: rgba(255,255,255,0.65); }
+
+  /* ===== FAQ SECTIONS ===== */
+  .faq-main {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding: 10px 40px 60px;
+  }
+
+  .faq-category {
+    margin-bottom: 46px;
+  }
+
+  .faq-category-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--teal-dark);
+    margin-bottom: 22px;
+  }
+
+  .faq-category-title .bar {
+    width: 34px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .faq-card {
+    background: #fff;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .faq-question span {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #eef2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+
+  .faq-toggle::before,
+  .faq-toggle::after {
+    content: "";
+    position: absolute;
+    background: var(--teal-dark);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-toggle::before {
+    width: 12px;
+    height: 2px;
+  }
+
+  .faq-toggle::after {
+    width: 2px;
+    height: 12px;
+  }
+
+  .faq-item.open .faq-toggle::after {
+    transform: scaleY(0);
+  }
+
+  .faq-answer-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+ 
+
+  .faq-answer {
+    padding: 0 28px 24px;
+    font-size: 15.5px;
+    color: var(--text-muted);
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner-wrap {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .cta-banner {
+    background: var(--teal-dark);
+    border-radius: 22px;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .cta-banner svg {
+    margin-bottom: 22px;
+  }
+
+  .cta-banner h2 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .cta-banner p {
+    color: rgba(255,255,255,0.65);
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .btn-touch {
+    background: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-touch:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--teal-dark);
+    padding: 60px 40px 30px;
+  }
+
+  .footer-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+
+  .footer-about {
+    color: rgba(255,255,255,0.6);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    max-width: 280px;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .social-icon:hover {
+    background: var(--gold);
+  }
+
+  .social-icon svg { width: 16px; height: 16px; fill: #fff; }
+
+  .footer-heading {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    font-size: 14.5px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: #fff; }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 50px auto 0;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-bottom-text,
+  .footer-bottom-links,
+  .footer-bottom-email {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-bottom-links a:hover { color: #fff; }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 200;
+    border: none;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links, .nav-right .signin-link { display: none; }
+    .hero h1 { font-size: 38px; }
+    .role-cards { grid-template-columns: 1fr; margin-top: 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo">
+      <svg width="30" height="24" viewBox="0 0 30 24" fill="none">
+        <path d="M2 22V8L9 2L15 8L21 2L28 8V22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      meet
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+
+      <li class="nav-item" data-dropdown="about">
+        <a href="#" class="nav-link">About <span class="nav-toggle-icon">+</span></a>
+        <div class="dropdown-panel">
+          <div class="dropdown-item">
+            <span class="dropdown-number">01</span>
+            <div><div class="dropdown-title">About Us</div><a href="about us.html" class="dropdown-desc">Learn more about MEET Resources</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">02</span>
+            <div><div class="dropdown-title">Our Story</div><a href="#" class="dropdown-desc">How MEET came to life</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">03</span>
+            <div><div class="dropdown-title">Our Partners</div><a href="#">Trusted organisations we work with</a></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" data-dropdown="platform">
+        <a href="" class="nav-link">Platform <span class="nav-toggle-icon">+</span></a>
+        <div class="dropdown-panel">
+          <div class="dropdown-item">
+            <span class="dropdown-number">01</span>
+            <div><div class="dropdown-title">How It Works</div><a href="#" class="dropdown-desc">Step-by-step platform guide</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">02</span>
+            <div><div class="dropdown-title">Shift/Staff Exchange</div><a href="" class="dropdown-desc">Exchange unutilised resources</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">03</span>
+            <div><div class="dropdown-title">Job Matching</div><a href="#" class="dropdown-desc">Find the perfect temporary match</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">04</span>
+            <div><div class="dropdown-title">Digital Timesheet</div><a href="" class="dropdown-desc">Track hours digitally</a></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" data-dropdown="users">
+        <a href="" class="nav-link">Users <span class="nav-toggle-icon">+</span></a>
+        <div class="dropdown-panel">
+          <div class="dropdown-item">
+            <span class="dropdown-number">01</span>
+            <div><div class="dropdown-title">For Agencies</div><a href="" class="dropdown-desc">Share your excess workers with partner agencies</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">02</span>
+            <div><div class="dropdown-title">For Hirers</div><a href="" class="dropdown-desc">Post vacancies and find vetted temp workers</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">03</span>
+            <div><div class="dropdown-title">For Workers</div><a href="" class="dropdown-desc">Browse shifts and start earning today</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">04</span>
+            <div><div class="dropdown-title">Get Started</div><a href="" class="dropdown-desc">Create a free account today</a></div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" data-dropdown="resources">
+        <a href="" class="nav-link">Resources <span class="nav-toggle-icon">+</span></a>
+        <div class="dropdown-panel">
+          <div class="dropdown-item">
+            <span class="dropdown-number">01</span>
+            <div><div class="dropdown-title">FAQs</div><a href="#" class="dropdown-desc">Answers to common questions</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">02</span>
+            <div><div class="dropdown-title">Help Centre</div><a href="" class="dropdown-desc">Guides and support articles</a></div>
+          </div>
+          <div class="dropdown-item">
+            <span class="dropdown-number">03</span>
+            <div><div class="dropdown-title">Media</div><a href="" class="dropdown-desc">Event photos, videos, and promotional content</a></div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="#" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="#" class="signin-link">Sign in</a>
+      <button class="btn-getstarted">Get Started</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span>FAQS</div>
+  <h1>Have <span>Questions?</span></h1>
+  <p>Everything you need to know about MEET. Pick your role to get started.</p>
+</section>
+
+<div class="role-cards">
+  <div class="role-card" data-role="workers">
+    <div class="role-icon">
+      <svg class="role-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0d3d35" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+    </div>
+    <h3>For Workers</h3>
+    <p>Find shifts, get paid, build your career.</p>
+  </div>
+
+  <div class="role-card" data-role="hirers">
+    <div class="role-icon">
+      <svg class="role-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0d3d35" stroke-width="2"><rect x="4" y="4" width="16" height="17" rx="1"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+    </div>
+    <h3>For Hirers</h3>
+    <p>Post jobs, hire faster, stay compliant.</p>
+  </div>
+
+  <div class="role-card" data-role="agencies">
+    <div class="role-icon">
+      <svg class="role-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0d3d35" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+    </div>
+    <h3>For Agencies</h3>
+    <p>Collaborate, share resources, grow your network.</p>
+  </div>
+</div>
+
+<main class="faq-main">
+
+  <div class="faq-category">
+    <h2 class="faq-category-title"><span class="bar"></span>Account &amp; Verification</h2>
+    <div class="faq-card">
+      <div class="faq-item open">
+        <button class="faq-question">
+          <span>How do I sign up as a temp worker?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">You can register directly on the platform, complete your profile, and upload required documents.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is needed for KYC?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Right to Work (RTW) check, DBS certificate check, and qualification verification.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How long does verification take?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Typically 2 weeks once all documents are submitted.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <h2 class="faq-category-title"><span class="bar"></span>Shift Finder &amp; Timesheets</h2>
+    <div class="faq-card">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How do I find available shifts?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Use the Shift Finder to browse jobs by location, skill, or availability.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Can I track my hours digitally?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Yes, the Digital Timesheet allows you to log your hours and submit them for payroll.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <h2 class="faq-category-title"><span class="bar"></span>Communication &amp; Training</h2>
+    <div class="faq-card">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How do I communicate with businesses?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Through the Message Center, where you can chat directly with hirers.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Will I get notifications for new shifts?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Yes, you will receive real-time alerts for job postings and updates.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Is training available?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">Yes, the Integrated LMS system offers CPD-accredited courses to upskill.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="cta-banner-wrap">
+  <div class="cta-banner">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <h2>Still have questions?</h2>
+    <p>Can't find the answer you're looking for? Chat with our friendly team.</p>
+    <button class="btn-touch">Get in touch</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <svg width="26" height="20" viewBox="0 0 30 24" fill="none">
+          <path d="M2 22V8L9 2L15 8L21 2L28 8V22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        meet
+      </div>
+      <p class="footer-about">The UK's leading platform revolutionising temporary workforce distribution.</p>
+      <div class="social-row">
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-2.9h2.5V9.7c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v2h2.8L16 14.9h-2.4V21.9A10 10 0 0022 12z"/></svg></a>
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .1 1 0 1.6.2 2 .4.5.2.9.4 1.3.8.4.4.6.8.8 1.3.2.4.4 1 .4 2 .1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.6-.4 2-.2.5-.4.9-.8 1.3-.4.4-.8.6-1.3.8-.4.2-1 .4-2 .4-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.6-.2-2-.4-.5-.2-.9-.4-1.3-.8-.4-.4-.6-.8-.8-1.3-.2-.4-.4-1-.4-2-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.6.4-2 .2-.5.4-.9.8-1.3.4-.4.8-.6 1.3-.8.4-.2 1-.4 2-.4 1-.1 1.3-.1 4-.1zM12 0C9.3 0 9 0 7.9.1c-1.2 0-2 .2-2.7.5-.7.3-1.4.7-1.9 1.2-.5.5-.9 1.2-1.2 1.9-.3.7-.5 1.5-.5 2.7C1.5 7.4 1.5 7.7 1.5 12s0 4.6.1 5.7c0 1.2.2 2 .5 2.7.3.7.7 1.4 1.2 1.9.5.5 1.2.9 1.9 1.2.7.3 1.5.5 2.7.5C9 24 9.3 24 12 24s3 0 4.1-.1c1.2 0 2-.2 2.7-.5.7-.3 1.4-.7 1.9-1.2.5-.5.9-1.2 1.2-1.9.3-.7.5-1.5.5-2.7.1-1.1.1-1.4.1-5.7s0-4.6-.1-5.7c0-1.2-.2-2-.5-2.7-.3-.7-.7-1.4-1.2-1.9-.5-.5-1.2-.9-1.9-1.2-.7-.3-1.5-.5-2.7-.5C15 0 14.7 0 12 0z"/><circle cx="12" cy="12" r="3.2"/><circle cx="18.4" cy="5.6" r="1.2"/></svg></a>
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zM1 8.5h4V23H1V8.5zm7 0h3.8v2c.5-1 1.8-2.2 3.7-2.2 4 0 4.5 2.6 4.5 6V23h-4v-7.3c0-1.7 0-4-2.4-4s-2.6 1.9-2.6 3.9V23H8V8.5z"/></svg></a>
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M22.5 3.5l-19 19M3.5 3.5l19 19"/></svg></a>
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M16.6 0c.4 2.5 2 4.3 4.4 4.6v3.6c-1.5 0-2.9-.5-4.4-1.4v7.6c0 4-3.2 6.6-6.7 5.7-2.4-.6-4.1-2.9-4.1-5.4 0-3 2.6-5.5 5.8-5.3v3.7c-1.3-.3-2.5.6-2.5 1.9 0 1.1.9 2 2 2s2.3-.7 2.3-2.6V0h3.2z"/></svg></a>
+        <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.5-.8-2.2c-.8-.8-1.7-.8-2.1-.9C15.8 4 12 4 12 4s-3.8 0-6.7.1c-.4 0-1.3.1-2.1.9-.6.7-.8 2.2-.8 2.2S2.2 9 2.2 10.7v1.6c0 1.7.2 3.5.2 3.5s.2 1.5.8 2.2c.8.8 1.9.8 2.4.9 1.7.1 6.4.1 6.4.1s3.8 0 6.7-.2c.4 0 1.3-.1 2.1-.9.6-.7.8-2.2.8-2.2s.2-1.7.2-3.5v-1.6c0-1.7-.2-3.5-.2-3.5zM9.8 14.9V8.9l5.6 3-5.6 3z"/></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-heading">COMPANY</div>
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Partners</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">PLATFORM</div>
+      <ul class="footer-links">
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Shift Exchange</a></li>
+        <li><a href="#">Job Matching</a></li>
+        <li><a href="#">Join Us</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">RESOURCES</div>
+      <ul class="footer-links">
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">ESG Statement</a></li>
+        <li><a href="#">Carbon Reduction Plan</a></li>
+        <li><a href="#">Environmental Policy</a></li>
+        <li><a href="#">Sustainability &amp; DEI Policy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">LEGAL &amp; SUPPORT</div>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-text">© 2026 Meet Resources Limited. All rights reserved.</div>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-bottom-email">info@meetresources.com</div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d3d35" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  // ===== NAV DROPDOWNS (hover-triggered via CSS; JS just syncs the +/− icon) =====
+  const navItems = document.querySelectorAll('.nav-item[data-dropdown]');
+
+  navItems.forEach(item => {
+    const icon = item.querySelector('.nav-toggle-icon');
+
+    item.addEventListener('mouseenter', () => {
+      icon.textContent = '−';
+    });
+
+    item.addEventListener('mouseleave', () => {
+      icon.textContent = '+';
+    });
+  });
+
+  // ===== FAQ ACCORDION =====
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  function setOpenHeight(item) {
+    const wrap = item.querySelector('.faq-answer-wrap');
+    wrap.style.maxHeight = wrap.scrollHeight + 'px';
+  }
+
+  // initialize already-open item (first one, matching screenshots)
+  faqItems.forEach(item => {
+    if (item.classList.contains('open')) {
+      setOpenHeight(item);
+    }
+  });
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const wrap = item.querySelector('.faq-answer-wrap');
+
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        item.classList.remove('open');
+        wrap.style.maxHeight = '0px';
+      } else {
+        item.classList.add('open');
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // recalc open heights on resize (text reflow)
+  window.addEventListener('resize', () => {
+    faqItems.forEach(item => {
+      if (item.classList.contains('open')) {
+        setOpenHeight(item);
+      }
+    });
+  });
+
+  // ===== BACK TO TOP =====
+  const backToTop = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
