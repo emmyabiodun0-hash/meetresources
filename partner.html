@@ -46,6 +46,7 @@ body{font-family:'Inter',sans-serif;color:var(--text-body);background:var(--bg-w
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 5%;
+  position: relative;
 }
 
 .nav-logo {
@@ -271,6 +272,7 @@ a{
   font-size: 0.88rem;
   font-weight: 600;
   transition: background var(--trans), transform var(--trans);
+  white-space: nowrap;
 }
 .btn-get-started:hover { background: var(--gold-light); transform: translateY(-1px); }
 
@@ -283,6 +285,7 @@ a{
   border: none;
   cursor: pointer;
   padding: 4px;
+  z-index: 260;
 }
 .hamburger span {
   display: block;
@@ -310,6 +313,8 @@ a{
   border-top: 1px solid rgba(255,255,255,0.1);
   animation: slideDown 0.3s ease;
   align-items: flex-start;
+  max-height: calc(100vh - 66px);
+  overflow-y: auto;
 }
 
 @keyframes slideDown {
@@ -322,7 +327,7 @@ a{
 .hero{background:var(--bg-hero);padding:72px 80px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;min-height:480px;overflow:hidden}
 .hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--gold);border-radius:1px}
-.hero h1{font-size:clamp(40px,4.5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:24px;color:var(--text-dark)}
+.hero h1{font-size:clamp(36px,4.5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:24px;color:var(--text-dark)}
 .hero h1 span{color:var(--gold)}
 .hero-desc{font-size:16px;color:var(--text-body);line-height:1.75;margin-bottom:36px;max-width:420px}
 .btn-hero{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:12px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
@@ -343,7 +348,7 @@ a{
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
 .badge.teal{background:rgba(26,74,71,.08);border-color:rgba(26,74,71,.2);color:var(--teal)}
 .badge.teal .badge-dot{background:var(--teal)}
-.section-title{font-size:clamp(30px,3.5vw,46px);font-weight:800;color:var(--text-dark);letter-spacing:-1px;margin-bottom:18px;line-height:1.15}
+.section-title{font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--text-dark);letter-spacing:-1px;margin-bottom:18px;line-height:1.15}
 .section-subtitle{font-size:16px;color:var(--text-muted);max-width:640px;margin:0 auto;line-height:1.75}
 
 /* PARTNERS */
@@ -388,7 +393,7 @@ a{
 .news-title.gold{color:var(--gold)}
 .news-card:hover .news-title{color:var(--gold)}
 .news-desc{font-size:13px;color:var(--text-muted);line-height:1.65;flex:1;display:-webkit-box;;-webkit-box-orient:vertical;overflow:hidden}
-.news-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.news-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;flex-wrap:wrap;gap:10px}
 .news-date{font-size:12px;color:var(--text-muted)}
 .btn-rm{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:22px;text-decoration:none;transition:background .2s}
 .btn-rm:hover{background:var(--teal-mid)}
@@ -399,7 +404,7 @@ a{
 .become-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
 .become-ey{display:inline-flex;align-items:center;gap:8px;background:rgba(201,149,106,.1);border:1px solid rgba(201,149,106,.2);border-radius:20px;padding:6px 16px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
 .become-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.become-title{font-size:clamp(34px,4vw,50px);font-weight:800;color:var(--text-dark);letter-spacing:-1px;line-height:1.1;margin-bottom:22px}
+.become-title{font-size:clamp(30px,4vw,50px);font-weight:800;color:var(--text-dark);letter-spacing:-1px;line-height:1.1;margin-bottom:22px}
 .become-title span{color:var(--teal);display:block}
 .become-desc{font-size:15px;color:var(--text-body);line-height:1.75;margin-bottom:32px}
 .benefit-list{list-style:none;display:flex;flex-direction:column;gap:16px}
@@ -428,7 +433,7 @@ footer{background:var(--teal-dark);padding:60px 48px 36px;color:rgba(255,255,255
 .fc ul{list-style:none;display:flex;flex-direction:column;gap:12px}
 .fc a{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
 .fc a:hover{color:#fff}
-.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;align-items:center;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:12px}
 .fbot a{color:rgba(255,255,255,.55);text-decoration:none;margin-left:20px}
 .fbot a:hover{color:#fff}
 
@@ -442,8 +447,69 @@ footer{background:var(--teal-dark);padding:60px 48px 36px;color:rgba(255,255,255
 .fu.vis{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-@media(max-width:1024px){.hero{padding:48px 32px 56px}.section{padding:64px 32px}.ft{grid-template-columns:1fr 1fr 1fr}}
-@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hero{grid-template-columns:1fr;padding:48px 20px 56px}.hero-right{display:none}.section{padding:56px 20px}.partners-grid{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr}.become-inner{grid-template-columns:1fr;gap:40px}.become-section{padding:56px 20px}.ft{grid-template-columns:1fr 1fr}.fbot{flex-direction:column;gap:12px;text-align:center}}
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .hero{padding:48px 32px 56px}
+  .section{padding:64px 32px}
+  .ft{grid-template-columns:1fr 1fr 1fr}
+  .partners-grid{max-width:100%}
+  .news-grid{max-width:100%}
+}
+
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+    width:100%;
+  }
+  .nav-links.open{ display:flex; }
+  .hamburger{ display:flex; }
+  .nav-links > a{
+    width:100%;
+    padding:6px 0;
+    font-size:0.95rem;
+  }
+  .nav-item-dropdown{ width:100%; }
+  .nav-item-dropdown > a{
+    width:100%;
+    justify-content:space-between;
+    padding:6px 0;
+  }
+  .nav-dropdown-item{ padding:10px 4px; }
+  .btn-signin{ display:none; }
+  .btn-get-started{ padding:8px 16px; font-size:0.82rem; }
+}
+
+@media(max-width:768px){
+  .nav-inner{ padding:0 20px; }
+  .hero{grid-template-columns:1fr;padding:44px 20px 48px;min-height:auto}
+  .hero-right{display:none}
+  .hero-desc{max-width:100%}
+  .section{padding:56px 20px}
+  .partners-grid{grid-template-columns:repeat(2,1fr)}
+  .row2 .partner-card{width:calc(50% - 6px);min-width:0}
+  .news-grid{grid-template-columns:1fr}
+  .become-inner{grid-template-columns:1fr;gap:36px}
+  .become-section{padding:56px 20px}
+  .pform{padding:28px}
+  .ft{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .fbot{flex-direction:column;gap:12px;text-align:center}
+  .fbot a{ margin-left:10px; }
+  footer{padding:48px 20px 28px}
+}
+
+@media(max-width:520px){
+  .hero h1{ letter-spacing:-1px; }
+  .btn-hero{ width:100%; justify-content:center; }
+  .partners-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .partner-card{ padding:22px 16px; min-height:90px; }
+  .row2 .partner-card{ width:100%; }
+  .become-title{ margin-bottom:18px; }
+  .pform{ padding:22px; }
+  .ff{ padding:12px 14px; font-size:13.5px; }
+  .ft{grid-template-columns:1fr}
+  .stb{ width:40px; height:40px; bottom:18px; right:18px; font-size:16px; }
+  .section-subtitle{ font-size:14.5px; }
+}
 </style>
 </head>
 <body>
@@ -834,7 +900,7 @@ hamburger.addEventListener('click', () => {
 document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
   link.addEventListener('click', function(e) {
 
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 900) {
       e.preventDefault();
 
       const parent = this.parentElement;
@@ -853,7 +919,7 @@ document.querySelectorAll('.nav-item-dropdown > a').forEach(link => {
 // Close mobile menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 900) {
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
     }
