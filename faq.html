@@ -22,14 +22,17 @@
     color: var(--text-dark);
     background: #fff;
     line-height: 1.5;
+    overflow-x: hidden;
   }
 
   a { text-decoration: none; color: inherit; }
+  img, svg { max-width: 100%; }
 
   /* ===== HEADER / NAV ===== */
   header {
     background: var(--teal-dark);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 100;
   }
 
@@ -40,6 +43,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px 40px;
+    position: relative;
   }
 
   .logo {
@@ -49,6 +53,7 @@
     font-size: 24px;
     font-weight: 700;
     color: #fff;
+    flex-shrink: 0;
   }
 
   .logo svg { display: block; }
@@ -107,12 +112,14 @@
     display: flex;
     align-items: center;
     gap: 26px;
+    flex-shrink: 0;
   }
 
   .signin-link {
     color: #fff;
     font-size: 15px;
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .btn-getstarted {
@@ -125,6 +132,7 @@
     border: none;
     cursor: pointer;
     transition: filter 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
   }
 
   .btn-getstarted:hover {
@@ -153,6 +161,7 @@
     border-radius: 14px;
     box-shadow: 0 18px 40px rgba(0,0,0,0.18);
     width: 300px;
+    max-width: 90vw;
     padding: 10px 0;
     opacity: 0;
     pointer-events: none;
@@ -220,6 +229,33 @@
     line-height: 1.4;
   }
 
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @keyframes navSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   /* ===== HERO ===== */
   .hero {
     background: linear-gradient(180deg, var(--teal-dark) 0%, var(--teal-mid) 100%);
@@ -251,7 +287,7 @@
 
   .hero h1 {
     color: #fff;
-    font-size: 56px;
+    font-size: clamp(32px, 5.5vw, 56px);
     font-weight: 800;
     margin-bottom: 22px;
     letter-spacing: -0.01em;
@@ -441,8 +477,6 @@
     transition: max-height 0.35s ease;
   }
 
- 
-
   .faq-answer {
     padding: 0 28px 24px;
     font-size: 15.5px;
@@ -531,6 +565,7 @@
 
   .social-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
   }
 
@@ -630,11 +665,111 @@
     transform: translateY(-3px);
   }
 
+  /* ══════════ RESPONSIVE BREAKPOINTS ══════════ */
+
+  @media (max-width: 1080px) {
+    .role-cards { grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 0 24px 60px; }
+  }
+
   @media (max-width: 900px) {
-    .nav-links, .nav-right .signin-link { display: none; }
-    .hero h1 { font-size: 38px; }
-    .role-cards { grid-template-columns: 1fr; margin-top: 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-wrap { padding: 16px 24px; }
+
+    .hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--teal-dark);
+      padding: 16px 24px 24px;
+      gap: 4px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-height: calc(100vh - 66px);
+      overflow-y: auto;
+      z-index: 90;
+    }
+
+    .nav-links.open {
+      display: flex;
+      animation: navSlideDown 0.25s ease;
+    }
+
+    .nav-links > li { width: 100%; }
+    .nav-links > li > a.nav-link { width: 100%; padding: 12px 4px; }
+
+    .nav-item::after { display: none; }
+    .nav-item > .nav-link { justify-content: space-between; }
+
+    .dropdown-panel {
+      position: static;
+      transform: none;
+      width: 100%;
+      max-width: 100%;
+      box-shadow: none;
+      border-radius: 0;
+      max-height: 0;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: none;
+      padding: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease, padding 0.25s ease;
+    }
+    .dropdown-panel::before { display: none; }
+
+    .nav-item.open .dropdown-panel {
+      max-height: 600px;
+      padding: 6px 0 10px;
+      pointer-events: auto;
+    }
+
+    .dropdown-item { padding: 10px 8px; }
+
+    .nav-right { gap: 14px; }
+    .nav-right .signin-link { display: none; }
+    .btn-getstarted { padding: 10px 18px; font-size: 14px; }
+
+    .hero { padding: 56px 24px 80px; }
+    .hero p { font-size: 16px; }
+
+    .role-cards { grid-template-columns: 1fr; margin-top: 24px; gap: 16px; }
+
+    .faq-main { padding: 10px 24px 50px; }
+    .faq-category-title { font-size: 22px; }
+
+    .cta-banner-wrap { padding: 0 24px 60px; }
+    .cta-banner { padding: 44px 26px; }
+
+    footer { padding: 48px 24px 26px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 64px; }
+    .hero-badge { font-size: 12px; padding: 7px 14px; }
+    .role-cards { padding: 0 20px 50px; }
+    .role-card { padding: 26px 22px; }
+    .faq-main { padding: 8px 20px 40px; }
+    .faq-question { padding: 20px 20px; }
+    .faq-question span { font-size: 15px; }
+    .faq-answer { padding: 0 20px 20px; font-size: 14.5px; }
+    .cta-banner-wrap { padding: 0 20px 50px; }
+    .cta-banner h2 { font-size: 24px; }
+    .cta-banner p { font-size: 14.5px; }
+    footer { padding: 40px 20px 22px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .back-to-top { width: 44px; height: 44px; bottom: 18px; right: 18px; }
+  }
+
+  @media (max-width: 400px) {
+    .logo { font-size: 20px; }
+    .btn-getstarted { padding: 9px 14px; font-size: 13px; }
+    .hero h1 { letter-spacing: -0.5px; }
   }
 </style>
 </head>
@@ -649,7 +784,7 @@
       meet
     </a>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="nav-link">Home</a></li>
 
       <li class="nav-item" data-dropdown="about">
@@ -738,6 +873,9 @@
     <div class="nav-right">
       <a href="#" class="signin-link">Sign in</a>
       <button class="btn-getstarted">Get Started</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -952,19 +1090,83 @@
 </button>
 
 <script>
-  // ===== NAV DROPDOWNS (hover-triggered via CSS; JS just syncs the +/− icon) =====
   const navItems = document.querySelectorAll('.nav-item[data-dropdown]');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
 
+  function isMobile() {
+    return window.innerWidth <= 900;
+  }
+
+  // ===== NAV DROPDOWNS =====
   navItems.forEach(item => {
     const icon = item.querySelector('.nav-toggle-icon');
+    const trigger = item.querySelector('.nav-link');
 
+    // Desktop: hover-triggered via CSS; JS just syncs the +/− icon
     item.addEventListener('mouseenter', () => {
-      icon.textContent = '−';
+      if (!isMobile()) icon.textContent = '−';
+    });
+    item.addEventListener('mouseleave', () => {
+      if (!isMobile()) icon.textContent = '+';
     });
 
-    item.addEventListener('mouseleave', () => {
-      icon.textContent = '+';
+    // Mobile: click-to-toggle
+    trigger.addEventListener('click', (e) => {
+      if (isMobile()) {
+        e.preventDefault();
+        const wasOpen = item.classList.contains('open');
+
+        navItems.forEach(other => {
+          if (other !== item) {
+            other.classList.remove('open');
+            other.querySelector('.nav-toggle-icon').textContent = '+';
+          }
+        });
+
+        item.classList.toggle('open', !wasOpen);
+        icon.textContent = !wasOpen ? '−' : '+';
+      }
     });
+  });
+
+  // ===== HAMBURGER MENU =====
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close mobile menu when a plain (non-dropdown) link is clicked
+  document.querySelectorAll('.nav-links > li > a.nav-link:not([href="#"])').forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMobile()) {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      }
+    });
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (isMobile() &&
+        navLinks.classList.contains('open') &&
+        !navLinks.contains(e.target) &&
+        !hamburger.contains(e.target)) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+
+  // Reset nav state when resizing past breakpoint
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      navItems.forEach(item => {
+        item.classList.remove('open');
+        item.querySelector('.nav-toggle-icon').textContent = '+';
+      });
+    }
   });
 
   // ===== FAQ ACCORDION =====
